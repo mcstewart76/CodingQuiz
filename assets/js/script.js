@@ -11,6 +11,7 @@ function startQuiz() {
 console.log("quiz has started")
 startPage.classList.add("hide")
 questionContainer.classList.remove("hide")
+currentQuestion = 0
 nextQuestion()
 }
 
@@ -21,6 +22,12 @@ function nextQuestion() {
 function showCurrentQuestion(question){
     questionEl.innerText = question.question
     console.log("showing next question")
+    question.answers.forEach(answer => {
+       const button = document.createElement('button') 
+       button.innerText = answer.text
+       button.classList.add('btn')
+       answersEl.appendChild(button)
+    });
 }
 
 function setAnswer() {
