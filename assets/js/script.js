@@ -1,3 +1,32 @@
+const startButton = document.getElementById("start-btn")
+const startPage = document.getElementById("starter")
+const questionContainer = document.getElementById("questionaire")
+const questionEl = document.getElementById("question")
+const answersEl = document.getElementById("answers")
+let currentQuestion
+
+startButton.addEventListener('click', startQuiz)
+
+function startQuiz() {
+console.log("quiz has started")
+startPage.classList.add("hide")
+questionContainer.classList.remove("hide")
+nextQuestion()
+}
+
+function nextQuestion() {
+    showCurrentQuestion(questions[currentQuestion])
+    console.log("next question que'ed")
+}
+function showCurrentQuestion(question){
+    questionEl.innerText = question.question
+    console.log("showing next question")
+}
+
+function setAnswer() {
+
+}
+
 const questions = [
     {
         question: "Commonly used data types DO NOT include:",
