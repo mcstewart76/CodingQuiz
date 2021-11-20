@@ -10,7 +10,7 @@ const correctEl = document.getElementById("correct")
 const finalEl   = document.getElementById("finalscore")
 const submitEl  = document.getElementById("submit")
 
-var lastquestion = false;
+let lastquestion 
 var secondsLeft = 90;
 let currentQuestion
 
@@ -21,8 +21,8 @@ console.log("quiz has started")
 startPage.classList.add("hide")
 questionContainer.classList.remove("hide")
 currentQuestion = 0
-nextQuestion()
 setTimer()
+nextQuestion()
 }
 
 function nextQuestion() {
@@ -31,10 +31,10 @@ function nextQuestion() {
      
     
     }else{
-        questionContainer.classList.add("hide")
-        alldoneEl.classList.remove("hide")
-        correctEl.classList.add("hide")
-        timeEl.classList.add("hide")
+         questionContainer.classList.add("hide")
+        //  alldoneEl.classList.remove("hide")
+        // correctEl.classList.add("hide")
+        // timeEl.classList.add("hide")
         lastquestion = true;
         
     }
@@ -95,18 +95,26 @@ function setTimer(){
     
         if(secondsLeft === 0) {
             clearInterval(timerInterval);
-            timeEnd();
+            displayScore()
         }
         if(lastquestion === true) {
             clearInterval(timerInterval);
-            timeEnd();
+            displayScore()
         }
     }
   , 1000);
 }
-function timeEnd(){
-    finalEl.textContent = " " + secondsLeft;
-    
+
+function displayScore(){
+  finalEl.textContent = " " + secondsLeft;
+  
+         alldoneEl.classList.remove("hide")
+         correctEl.classList.add("hide")
+         timeEl.classList.add("hide")
+         submitEl.addEventListener('click', recordScore)
+}
+function recordScore(){
+
 }
 
 const questions = [
