@@ -3,6 +3,12 @@ const startPage = document.getElementById("starter")
 const questionContainer = document.getElementById("questionaire")
 const questionEl = document.getElementById("question")
 const answersEl = document.getElementById("answers")
+const timeEl = document.getElementById("timer")
+const alldoneEl = document.getElementById("allDone")
+const correctH3El = document.getElementById("correctH3")
+const correctEl = document.getElementById("correct")
+
+var secondsLeft = 90;
 let currentQuestion
 
 startButton.addEventListener('click', startQuiz)
@@ -13,10 +19,20 @@ startPage.classList.add("hide")
 questionContainer.classList.remove("hide")
 currentQuestion = 0
 nextQuestion()
+setTimer()
 }
 
 function nextQuestion() {
-    showCurrentQuestion(questions[currentQuestion])
+    if(questions.length>currentQuestion){
+     showCurrentQuestion(questions[currentQuestion]) 
+     
+    
+    }else{
+        questionContainer.classList.add("hide")
+        alldoneEl.classList.remove("hide")
+        correctEl.classList.add("hide")
+    }
+    
     console.log("next question que'ed")
 }
 function showCurrentQuestion(question){
@@ -26,12 +42,59 @@ function showCurrentQuestion(question){
        const button = document.createElement('button') 
        button.innerText = answer.text
        button.classList.add('btn')
+       if(answer.right) {
+           button.dataset.right = answer.right
+           button.addEventListener('click', selectedAnswerTrue)
+            
+       }else{
+        button.addEventListener('click', selectedAnswerFalse)  
+
+       }
        answersEl.appendChild(button)
+       
     });
 }
+function selectedAnswerTrue() {
+    console.log("answer was true?")
+    currentQuestion++
+    resetAnswers()
+    correctEl.classList.remove("hide")
+    correctH3El.textContent = "Correct"
+    if(secondsLeft < secondsLeft - 2){
+        correctEl.classList.add("hide")
+    }
+    nextQuestion()
+}
+function selectedAnswerFalse() {
+    console.log("answer was false?")
+    currentQuestion++
+    resetAnswers()
+    correctEl.classList.remove("hide")
+    correctH3El.textContent = "Incorrect"
+    if(secondsLeft < secondsLeft - 2){
+        correctEl.classList.add("hide")
+    }
+    nextQuestion()
+}
+function resetAnswers() {
+    answersEl.innerHTML = "";
+}
 
-function setAnswer() {
-
+function setTimer(){
+    timeEl.classList.remove("hide")
+    var timerInterval = setInterval(function() {
+        secondsLeft--;
+        timeEl.textContent = "Timer: " + secondsLeft;
+    
+        if(secondsLeft === 0) {
+            clearInterval(timerInterval);
+            timeEnd();
+        }
+    }
+  , 1000);
+}
+function timeEnd(){
+    console.log("timer has ended")
 }
 
 const questions = [
