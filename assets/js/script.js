@@ -7,7 +7,10 @@ const timeEl = document.getElementById("timer")
 const alldoneEl = document.getElementById("allDone")
 const correctH3El = document.getElementById("correctH3")
 const correctEl = document.getElementById("correct")
+const finalEl   = document.getElementById("finalscore")
+const submitEl  = document.getElementById("submit")
 
+var lastquestion = false;
 var secondsLeft = 90;
 let currentQuestion
 
@@ -31,6 +34,9 @@ function nextQuestion() {
         questionContainer.classList.add("hide")
         alldoneEl.classList.remove("hide")
         correctEl.classList.add("hide")
+        timeEl.classList.add("hide")
+        lastquestion = true;
+        
     }
     
     console.log("next question que'ed")
@@ -60,9 +66,9 @@ function selectedAnswerTrue() {
     resetAnswers()
     correctEl.classList.remove("hide")
     correctH3El.textContent = "Correct"
-    if(secondsLeft < secondsLeft - 2){
-        correctEl.classList.add("hide")
-    }
+    console.log(secondsLeft + " seconds left")
+    setTimeout(function() {correctEl.classList.add("hide")
+    }, 700);
     nextQuestion()
 }
 function selectedAnswerFalse() {
@@ -71,9 +77,10 @@ function selectedAnswerFalse() {
     resetAnswers()
     correctEl.classList.remove("hide")
     correctH3El.textContent = "Incorrect"
-    if(secondsLeft < secondsLeft - 2){
-        correctEl.classList.add("hide")
-    }
+    console.log(secondsLeft + "seconds left")
+    setTimeout(function() {correctEl.classList.add("hide")
+    }, 700);
+    secondsLeft = secondsLeft - 10;
     nextQuestion()
 }
 function resetAnswers() {
@@ -90,11 +97,16 @@ function setTimer(){
             clearInterval(timerInterval);
             timeEnd();
         }
+        if(lastquestion === true) {
+            clearInterval(timerInterval);
+            timeEnd();
+        }
     }
   , 1000);
 }
 function timeEnd(){
-    console.log("timer has ended")
+    finalEl.textContent = " " + secondsLeft;
+    
 }
 
 const questions = [
