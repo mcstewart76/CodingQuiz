@@ -9,7 +9,11 @@ const correctH3El = document.getElementById("correctH3")
 const correctEl = document.getElementById("correct")
 const finalEl = document.getElementById("finalscore")
 const submitEl = document.getElementById("submit")
+const allDoneH1El = document.getElementById("allDoneH1")
+const goBack = document.getElementById("back")
 
+var initialsEl = document.getElementById("initials")
+let storedEl
 let lastquestion
 var secondsLeft = 90;
 let currentQuestion
@@ -113,9 +117,23 @@ function displayScore() {
     alldoneEl.classList.remove("hide")
     correctEl.classList.add("hide")
     timeEl.classList.add("hide")
-    submitEl.addEventListener('click', recordScore)
+    submitEl.addEventListener('click', recordScore )
 }
-function recordScore() {
+function recordScore(event) {
+    event.preventDefault();
+    console.log(event)
+    console.log("submitted?")
+    initialsEl = initialsEl.value;
+    localStorage.setItem("Highscore", initialsEl)
+    localStorage.setItem("Seconds", secondsLeft)
+    allDoneH1El.innerHTML = "Highscore Submitted!"
+    setTimeout(function () {
+        window.location.href("/CodingQuiz/highscore.html")
+        console.log("newpage")
+        highScoresPage()
+    }, 700);
+}
+function highScoresPage(){
 
 }
 
