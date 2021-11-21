@@ -11,7 +11,7 @@ const finalEl = document.getElementById("finalscore")
 const submitEl = document.getElementById("submit")
 const allDoneH1El = document.getElementById("allDoneH1")
 
-
+let storedHighscores = [];
 var initialsEl = document.getElementById("initials")
 let storedEl
 let lastquestion
@@ -53,7 +53,7 @@ function showCurrentQuestion(question) {
         button.innerText = answer.text
         button.classList.add('btn')
         if (answer.right) {
-            button.dataset.right = answer.right
+            //button.dataset.right = answer.right
             button.addEventListener('click', selectedAnswerTrue)
 
         } else {
@@ -117,24 +117,39 @@ function displayScore() {
     alldoneEl.classList.remove("hide")
     correctEl.classList.add("hide")
     timeEl.classList.add("hide")
-    submitEl.addEventListener('click', recordScore )
+    submitEl.addEventListener('click', recordScore)
 }
 function recordScore(event) {
     event.preventDefault();
     console.log(event)
     console.log("submitted?")
     initialsEl = initialsEl.value;
-    localStorage.setItem("Highscore", initialsEl)
-    localStorage.setItem("Seconds", secondsLeft)
+    storedHighscores = {"initials": initialsEl, "score" : secondsLeft };
+
+    var temp = getLocalContent();
+    resultArray = [];
+    if(temp.length > 0){
+        resultArray = temp;
+        resultArray.push(storedHighscores)
+    }else{
+        resultArray.push(storedHighscores)
+    }
+
+    localStorage.setItem("Results", JSON.stringify(resultArray))
+    // localStorage.setItem("Highscore", initialsEl)
+    // localStorage.setItem("Seconds", secondsLeft)
     allDoneH1El.innerHTML = "Highscore Submitted!"
     setTimeout(function () {
         window.location.replace("/CodingQuiz/highscore.html")
         console.log("newpage")
-        highScoresPage()
+        
     }, 700);
+    
 }
-function highScoresPage(){
-
+function getLocalContent(){
+ var highscore = JSON.parse(localStorage.getItem("Results")) || [];
+ console.log(highscore)
+ return highscore
 }
 
 const questions = [
