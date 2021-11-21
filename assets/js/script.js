@@ -10,7 +10,7 @@ const correctEl = document.getElementById("correct")
 const finalEl = document.getElementById("finalscore")
 const submitEl = document.getElementById("submit")
 const allDoneH1El = document.getElementById("allDoneH1")
-const goBack = document.getElementById("back")
+
 
 var initialsEl = document.getElementById("initials")
 let storedEl
@@ -128,7 +128,7 @@ function recordScore(event) {
     localStorage.setItem("Seconds", secondsLeft)
     allDoneH1El.innerHTML = "Highscore Submitted!"
     setTimeout(function () {
-        window.location.href("/CodingQuiz/highscore.html")
+        window.location.replace("/CodingQuiz/highscore.html")
         console.log("newpage")
         highScoresPage()
     }, 700);
