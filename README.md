@@ -2,7 +2,11 @@
 # Coding Quiz
 A user provided they wanted a intuitive coding quiz that met the following criteria:
 
-*
+* Start Quiz initializes a timer
+* Questions appear after eachother
+* When questions are answered incorrectly the time gets subtracted by 10 seconds
+* When all questions are answered or time runs out the quiz ends
+* When quiz is over, user can save initials and score to a highscore page 
 
 
 ## Coding Quiz
