@@ -1,0 +1,191 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+}
+
+body {
+    padding: 0;
+    margin: 0px;
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    flex-direction: column;
+    background-color: rgb(58, 183, 187);
+
+}
+
+#pagecontain{
+    padding: 0px;
+    margin: 10px;
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    background-color: rgb(58, 183, 187);
+}
+
+#head{
+    width: 100%;
+    height: 5%;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+#timer, #viewscore{
+   margin: 8px 10px;
+   font-size: 20px;
+}
+
+a{
+    text-decoration: inherit;
+}
+
+a:hover{
+    color: lavender;
+}
+
+h1 {
+    color: black;
+    font-size: 2.5em;
+    display: flex;
+    justify-content: center;
+    margin: 12px 20px 20px;  
+}
+
+h2{
+    color: black;
+    font-size: 2em;
+    display: flex;
+    justify-content: left;
+    margin: 5px 10px 20px;
+}
+
+#startcontain{
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+#start,#end{
+    display: flex;
+    justify-content: center;
+    padding: 10px; 
+}
+
+.container{
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    max-height: fit-content;
+    max-width: 80%;
+    margin: 0px auto;
+    padding: 0px;
+}
+
+.container#questionaire {
+    background-color: rgb(205, 135, 222);
+    border-radius: 10px;
+    
+
+}
+
+#questionaire{
+    margin: 10px auto;
+    padding: 20px;
+}
+
+#answers{
+    flex-direction: column;
+    float: left;
+    gap: 10px;
+    display: flex;
+    padding: 5px ;
+    margin: 5px 0px -5px;
+}
+
+.btn, #submit{
+    font-size: 20px;
+    background-color: rgb(125, 29, 216);
+    border: 2px solid rgb(94, 3, 179);
+    border-radius: 5px;
+    color: rgb(208, 209, 196);
+    padding: 3px 8px 3px 5px;
+    outline: none;
+    width: fit-content;
+    
+}
+
+
+#correct{
+    border-top: 10px double rgba(199, 212, 200, 0.746);
+    width: 500px;
+    max-width: 80%;
+    margin: 0px auto;
+    padding: 15px 15px;
+}
+
+.allDone{
+    width: 400px;
+    height: 200px;
+    max-width: 80%;
+    margin: 0px auto;
+    background-color: rgb(45, 189, 177);
+    border-radius: 10px;
+}
+
+p{
+    padding: 5px 20px;
+}
+
+form{
+    padding: 20px;
+}
+
+#initials{
+    width: 175px;
+    height: 28px;
+    border-radius: 3px;
+    border-style: 3px solid;
+    padding-left: 10px;
+}
+
+#highscore{
+width: 400px;
+min-height: 300px;
+max-width: 80%;
+margin: 0px auto;   
+}
+
+#highscore h2{
+    margin: 0px 10px;
+    padding: 10px;
+}
+
+.score-names{
+    background-color: lightpink;
+    color: black;
+    margin: 3px 20px;
+    display: flex;
+    padding: 4px;
+   
+
+}
+
+
+#goBack, #clearscore{
+    margin: 10px;
+    padding: 10px; 
+}
+
+#highscoreButtons{
+    display: flex;
+    justify-content: space-between;
+}
+
+.hide{
+    display: none;
+}
+
