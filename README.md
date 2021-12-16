@@ -16,3 +16,5 @@ A user provided they wanted a intuitive coding quiz that met the following crite
 >**Picture of the site**
 
 ![This webpage includes a short intuitive quiz on basic coding elements, displays correct/incorrect on previous question, and shows a highscore page with local results](./assets/images/CodingQuiz.JPG)
+
+<img src="https://github.com/mcstewart76/CodingQuiz/raw/main/assets/images/CodingQuiz.JPG">
